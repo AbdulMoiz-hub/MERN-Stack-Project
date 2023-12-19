@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from 'react';
+import ProductForm from './Components/ProductForm';
+import ProductList from './Components/ProductList';
 function App() {
+  const [showForm, setShowForm] = useState(false);
+  const toggleForm = () => {
+    setShowForm((prevShowForm) => !prevShowForm);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={toggleForm}>
+        {showForm ? 'Hide Product Form' : 'Show Product Form'}
+      </button>
+
+      {showForm && <ProductForm />}
+
+      <ProductList />
     </div>
   );
 }
-
 export default App;
